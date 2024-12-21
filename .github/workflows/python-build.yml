@@ -24,7 +24,7 @@ jobs:
 
     - name: Test - Code format
       run: |
-        black --check --diff --color pdf2zh/*.py
+        black --check --diff --color pdf2zh/*.py test/*.py
         flake8 --ignore E203,E261,E501,W503,E741
     
     - name: Test - Unit Test
@@ -34,6 +34,14 @@ jobs:
     - name: Test - Translate a PDF file with plain text only
       run: 
         pdf2zh ./test/file/translate.cli.plain.text.pdf
+
+    - name: Test - Translate a PDF file figure
+      run: 
+        pdf2zh ./test/file/translate.cli.text.with.figure.pdf
+
+    # - name: Test - Translate a PDF file with unknown font
+    #   run: 
+    #     pdf2zh ./test/file/translate.cli.font.unknown.pdf
 
     - name: Test - Start GUI and exit
       run: 
